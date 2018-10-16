@@ -341,9 +341,16 @@ function! s:GetContextIndent()
       elseif s:curr_line =~ '^\s*(\s*$' && l:bracket_level == 0
         call verilog_systemverilog#Verbose("Standalone '(' after block declaration.")
         return indent(l:lnum)
+      elseif s:curr_line =~ '^\s*#(\s*$' && l:bracket_level == 0
+        call verilog_systemverilog#Verbose("Standalone '#(' after block declaration.")
+        return indent(l:lnum)
       else
-        call verilog_systemverilog#Verbose("Indenting a single line block.")
-        return indent(l:lnum) + s:offset + l:open_offset
+        if l:line =~ s:vlog_module
+          return indent(l:lnum)
+        else
+          call verilog_systemverilog#Verbose("Indenting a single line block.")
+          return indent(l:lnum) + s:offset + l:open_offset
+        endif
       endif
     elseif s:curr_line =~ '^\s*else' && l:line =~ '\<\(if\|assert\)\>\s*(.*)'
       call verilog_systemverilog#Verbose("'else' of 'if' or 'assert'.")
