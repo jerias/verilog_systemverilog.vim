@@ -2,32 +2,32 @@
 let g:verilog_disable_indent="eos"
 
 " Command definitions
-command! -nargs=* VerilogErrorFormat call verilog_systemverilog#VerilogErrorFormat(<f-args>)
-command!          VerilogFollowInstance call verilog_systemverilog#FollowInstanceTag(line('.'), col('.'))
-command!          VerilogFollowPort call verilog_systemverilog#FollowInstanceSearchWord(line('.'), col('.'))
-command!          VerilogGotoInstanceStart call verilog_systemverilog#GotoInstanceStart(line('.'), col('.'))
-command! -nargs=+ -complete=customlist,verilog_systemverilog#CompleteCommand
+command! -nargs=* VerilogErrorFormat call SystemVerilog#VerilogErrorFormat(<f-args>)
+command!          VerilogFollowInstance call SystemVerilog#FollowInstanceTag(line('.'), col('.'))
+command!          VerilogFollowPort call SystemVerilog#FollowInstanceSearchWord(line('.'), col('.'))
+command!          VerilogGotoInstanceStart call SystemVerilog#GotoInstanceStart(line('.'), col('.'))
+command! -nargs=+ -complete=customlist,SystemVerilog#CompleteCommand
             \ VerilogFoldingAdd
-            \ call verilog_systemverilog#PushToVariable('verilog_syntax_fold_lst', '<args>')
-command! -nargs=+ -complete=customlist,verilog_systemverilog#CompleteCommand
+            \ call SystemVerilog#PushToVariable('verilog_syntax_fold_lst', '<args>')
+command! -nargs=+ -complete=customlist,SystemVerilog#CompleteCommand
             \ VerilogFoldingRemove
-            \ call verilog_systemverilog#PopFromVariable('verilog_syntax_fold_lst', '<args>')
-command! -nargs=+ -complete=customlist,verilog_systemverilog#CompleteCommand
+            \ call SystemVerilog#PopFromVariable('verilog_syntax_fold_lst', '<args>')
+command! -nargs=+ -complete=customlist,SystemVerilog#CompleteCommand
             \ VerilogDisableIndentAdd
-            \ call verilog_systemverilog#PushToVariable('verilog_disable_indent_lst', '<args>')
-command! -nargs=+ -complete=customlist,verilog_systemverilog#CompleteCommand
+            \ call SystemVerilog#PushToVariable('verilog_disable_indent_lst', '<args>')
+command! -nargs=+ -complete=customlist,SystemVerilog#CompleteCommand
             \ VerilogDisableIndentRemove
-            \ call verilog_systemverilog#PopFromVariable('verilog_disable_indent_lst', '<args>')
-command! -nargs=+ -complete=customlist,verilog_systemverilog#CompleteCommand
+            \ call SystemVerilog#PopFromVariable('verilog_disable_indent_lst', '<args>')
+command! -nargs=+ -complete=customlist,SystemVerilog#CompleteCommand
             \ VerilogErrorUVMAdd
-            \ call verilog_systemverilog#PushToVariable('verilog_efm_uvm_lst', '<args>')
-command! -nargs=+ -complete=customlist,verilog_systemverilog#CompleteCommand
+            \ call SystemVerilog#PushToVariable('verilog_efm_uvm_lst', '<args>')
+command! -nargs=+ -complete=customlist,SystemVerilog#CompleteCommand
             \ VerilogErrorUVMRemove
-            \ call verilog_systemverilog#PopFromVariable('verilog_efm_uvm_lst', '<args>')
+            \ call SystemVerilog#PopFromVariable('verilog_efm_uvm_lst', '<args>')
 
 " Configure tagbar
 " This requires a recent version of universal-ctags
-let g:tagbar_type_verilog_systemverilog = {
+let g:tagbar_type_SystemVerilog = {
     \ 'ctagstype'   : 'SystemVerilog',
     \ 'kinds'       : [
         \ 'b:blocks:1:1',

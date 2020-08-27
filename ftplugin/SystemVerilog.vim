@@ -1,5 +1,5 @@
 " Vim filetype plugin file
-" Language:	SystemVerilog (superset extension of Verilog)
+" Language:    SystemVerilog (superset extension of Verilog)
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
@@ -10,7 +10,7 @@ endif
 setlocal include=^\\s*`include
 
 " Set omni completion function
-setlocal omnifunc=verilog_systemverilog#Complete
+setlocal omnifunc=SystemVerilog#Complete
 
 " Store cpoptions
 let oldcpo=&cpoptions

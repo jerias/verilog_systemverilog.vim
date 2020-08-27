@@ -1,5 +1,5 @@
 " Vim syntax file
-" Language:	SystemVerilog (superset extension of Verilog)
+" Language:    SystemVerilog (superset extension of Verilog)
 
 " Extends Verilog syntax
 " Requires $VIMRUNTIME/syntax/verilog.vim to exist
@@ -164,7 +164,7 @@ function! s:SyntaxCreate(name, verilog_syntax)
                 let region_start = entry["match_start"]
                 let region_end = entry["match_end"]
 
-                if verilog_systemverilog#VariableExists('verilog_quick_syntax')
+                if SystemVerilog#VariableExists('verilog_quick_syntax')
                     execute 'syn keyword verilogStatement '.region_start.' '.region_end
                 else
                     let verilog_syn_region_cmd = 'syn region '.verilog_syn_region_name
@@ -201,7 +201,7 @@ function! s:SyntaxCreate(name, verilog_syntax)
 endfunction
 
 " Only enable folding if verilog_syntax_fold_lst is defined
-let s:verilog_syntax_fold=verilog_systemverilog#VariableGetValue("verilog_syntax_fold_lst")
+let s:verilog_syntax_fold=SystemVerilog#VariableGetValue("verilog_syntax_fold_lst")
 
 " Syntax priority list
 let s:verilog_syntax_order = [
@@ -380,7 +380,7 @@ if version >= 508 || !exists("did_verilog_syn_inits")
    delcommand HiLink
 endif
 
-let b:current_syntax = "verilog_systemverilog"
+let b:current_syntax = "SystemVerilog"
 
 " Restore cpoptions
 let &cpoptions=oldcpo

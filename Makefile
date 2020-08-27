@@ -48,7 +48,7 @@ performance:
 profile:
 	$(SILENT) $(VIM) \
 		--cmd 'profile start verilog_profile.result' \
-		--cmd 'profile! file indent/verilog_systemverilog.vim' \
+		--cmd 'profile! file indent/SystemVerilog.vim' \
 		-c 'source test/functions.vim' \
 		-c 'source test/run_test.vim'
 
