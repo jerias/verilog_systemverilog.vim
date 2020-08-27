@@ -16,9 +16,9 @@ let b:did_indent = 1
 
 setlocal indentexpr=GetVerilogSystemVerilogIndent()
 setlocal indentkeys=!^F,o,O,0),0},=begin,=end,=join,=endcase,=join_any,=join_none
-setlocal indentkeys+==endmodule,=endfunction,=endtask,=endspecify
+setlocal indentkeys+==endmodule,=endinterface,=endfunction,=endtask,=endspecify
 setlocal indentkeys+==endclass,=endpackage,=endsequence,=endclocking
-setlocal indentkeys+==endinterface,=endgroup,=endprogram,=endproperty
+setlocal indentkeys+==endgroup,=endprogram,=endproperty
 setlocal indentkeys+==endgenerate,=endchecker,=endconfig,=endprimitive,=endtable
 setlocal indentkeys+==`else,=`endif
 setlocal indentkeys+=;
@@ -48,7 +48,7 @@ let s:vlog_preproc        = '^\s*`ifn\?def\>'
 let s:vlog_case           = '\<case[zx]\?\>\s*('
 let s:vlog_join           = '\<join\(_any\|_none\)\?\>'
 
-let s:vlog_block_decl     = '\(\<\(while\|if\|foreach\|for\)\>\s*(\)\|\<\(else\|do\)\>\|' . s:vlog_always .'\|'. s:vlog_module
+let s:vlog_block_decl     = '\(\<\(while\|if\|foreach\|for\)\>\s*(\)\|\<\(else\|do\)\>\|' . s:vlog_always .'\|'. s:vlog_module .'\|'. s:vlog_interface
 
 let s:vlog_context_end    = '\<end\(package\|function\|class\|module\|group\|generate\|program\|property\|sequence\|interface\|task\)\>\|`endif\>'
 
