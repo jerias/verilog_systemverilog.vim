@@ -400,7 +400,11 @@ function! s:GetContextIndent()
     endif
 
     if l:line =~ s:vlog_module
-      return s:GetContextStartIndent("module"    , l:lnum) + l:open_offset
+      if s:curr_line =~ '^\s*(\s*$' || s:curr_line =~ '^\s*#(\s*$'
+        return s:GetContextStartIndent("moduleports"    , l:lnum) + l:open_offset
+      else
+        return s:GetContextStartIndent("module"    , l:lnum) + l:open_offset
+      endif
     elseif l:line =~ s:vlog_interface
       return s:GetContextStartIndent("interface" , l:lnum) + l:open_offset
     elseif l:line =~ s:vlog_class
