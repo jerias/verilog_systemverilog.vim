@@ -15,7 +15,7 @@ endif
 let b:did_indent = 1
 
 setlocal indentexpr=GetVerilogSystemVerilogIndent()
-setlocal indentkeys=!^F,o,O,0),0},=begin,=end,=join,=endcase,=join_any,=join_none
+setlocal indentkeys=!^F,o,O,0(,0),0},=begin,=end,=join,=endcase,=join_any,=join_none
 setlocal indentkeys+==endmodule,=endfunction,=endtask,=endspecify
 setlocal indentkeys+==endclass,=endpackage,=endsequence,=endclocking
 setlocal indentkeys+==endinterface,=endgroup,=endprogram,=endproperty
@@ -417,6 +417,11 @@ function! s:GetContextIndent()
       return s:GetContextStartIndent("program"   , l:lnum) + l:open_offset
     elseif l:line =~ s:vlog_generate
       return s:GetContextStartIndent("generate"  , l:lnum) + l:open_offset
+    elseif l:line =~ '^\s*[a-zA-Z_][a-zA-Z0-9_]*\s*$'
+      " Bare identifier (potential instance name)
+      if s:curr_line =~ '^\s*(\s*$' || s:curr_line =~ '^\s*#(\s*$'
+        return s:GetContextStartIndent("moduleports", l:lnum) + l:open_offset
+      endif
     elseif l:line =~ s:vlog_sequence
       return s:GetContextStartIndent("sequence"  , l:lnum) + l:open_offset
     elseif l:line =~ s:vlog_clocking
